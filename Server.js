@@ -33,9 +33,8 @@ var upload = multer({
 });
 
 app.post('/user-profile', upload.single('profileImg'), (req, res, next) => {
-    console.log(req.body.formData)
     const user = {
-        name: req.body.name,
+        ...(JSON.parse(req.body.formData)),
         profileImg: req.file.filename
     };
     
